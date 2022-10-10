@@ -16252,16 +16252,16 @@ The polynomial:
 
 <span class="c1"># Computing RSS for test data</span>
 <span class="n">best_feature_set</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">best_coef</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">if</span> <span class="n">adult_infant_rss</span> <span class="o">&lt;</span> <span class="n">adult_infant_bmi_rss</span><span class="p">:</span>
     <span class="n">best_feature_set</span> <span class="o">=</span> <span class="n">feature_set_1</span>
-    <span class="n">best_coef</span> <span class="o">=</span> <span class="n">reg1</span><span class="o">.</span><span class="n">coef_</span>
+    <span class="n">best_model</span> <span class="o">=</span> <span class="n">reg1</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">best_feature_set</span> <span class="o">=</span> <span class="n">feature_set_2</span>
-    <span class="n">best_coef</span> <span class="o">=</span> <span class="n">reg2</span><span class="o">.</span><span class="n">coef_</span>
+    <span class="n">best_model</span> <span class="o">=</span> <span class="n">reg2</span>
 
 <span class="n">test_X</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[</span><span class="n">best_feature_set</span><span class="p">]</span>
-<span class="n">best_multi_rss</span> <span class="o">=</span> <span class="n">rss</span><span class="p">(</span><span class="n">test_Y</span><span class="p">,</span> <span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">,</span> <span class="n">best_coef</span><span class="p">))</span>
+<span class="n">best_multi_rss</span> <span class="o">=</span> <span class="n">rss</span><span class="p">(</span><span class="n">test_Y</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -16306,7 +16306,7 @@ Prediction using feature set 2: 69.7570987342817
 <p><strong>--- YOUR ANSWER HERE ---</strong></p>
 <ol>
 <li>As shown above, feature set 2 - <code>["Adult_Mortality", "infant_deaths", "BMI"]</code> has a lower RSS and hence better accuracy on an average</li>
-<li>As shown above, the predicted life expectancy using feature set 1 is <code>71.042</code> while that using feature set 2 is <code>69.757</code>. Thus feature set 2 is closer to the ground truth.</li>
+<li>As shown above, the predicted life expectancy using feature set 1 is <code>71.042</code> while that using feature set 2 is <code>69.757</code>. Thus feature set 2 is closer to the ground truth, ie. <code>75</code>. A point to note here is that a model having a low RSS does not mean that it will have the most accurate prediction for every data point.</li>
 </ol>
 
 </div>
@@ -16342,7 +16342,7 @@ Prediction using feature set 2: 69.7570987342817
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>RSS for the best multi-attribute model on the TEST data: 2.926565e+06
+<pre>RSS for the best multi-attribute model on the TEST data: 2.150919e+04
 </pre>
 </div>
 </div>
@@ -16582,6 +16582,8 @@ When we get the least value of rss, ie. best possible value of lambda, the model
         
 <span class="c1"># Printing non-zero coefs for attributes</span>
 <span class="n">print_nonzero_weights</span><span class="p">(</span><span class="n">all_features</span><span class="p">,</span> <span class="n">best_lasso_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;* ------------- * ------------- *&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lasso Model Intercept: </span><span class="si">{</span><span class="n">best_lasso_model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16620,6 +16622,8 @@ thinness_1-19_years: -0.04797008905968007
 thinness_5-9 years: 0.004143785456149918
 Income_composition_of_resources: 0.778783819548255
 Schooling: 1.0434005980406502
+* ------------- * ------------- *
+Lasso Model Intercept: 99.82656331604548
 </pre>
 </div>
 </div>
