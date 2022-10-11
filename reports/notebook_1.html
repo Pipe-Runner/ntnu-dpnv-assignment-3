@@ -16306,7 +16306,7 @@ Prediction using feature set 2: 69.7570987342817
 <p><strong>--- YOUR ANSWER HERE ---</strong></p>
 <ol>
 <li>As shown above, feature set 2 - <code>["Adult_Mortality", "infant_deaths", "BMI"]</code> has a lower RSS and hence better accuracy on an average</li>
-<li>As shown above, the predicted life expectancy using feature set 1 is <code>71.042</code> while that using feature set 2 is <code>69.757</code>. Thus feature set 2 is closer to the ground truth, ie. <code>75</code>. A point to note here is that a model having a low RSS does not mean that it will have the most accurate prediction for every data point.</li>
+<li>As shown above, the predicted life expectancy using feature set 1 is <code>71.042</code> while that using feature set 2 is <code>69.757</code>. Thus feature set 1 is closer to the ground truth, ie. <code>75</code>. A point to note here is that a model having a low RSS does not mean that it will have the most accurate prediction for every data point.</li>
 </ol>
 
 </div>
@@ -16544,7 +16544,7 @@ Schooling: 0.7122237664767337
 <p>Hint #2: Don't be surprised that the best model will probably be with the lowest lambda. It just shows that leaving out certain features would not give a more accurate model.</p>
 <p><strong>Reflection question:</strong> Which of the 17 initial parameters was "discarded" by the Lasso regression as an insignificant attribute?</p>
 <p><strong>--- YOUR ANSWER HERE ---</strong><br>
-When we get the least value of rss, ie. best possible value of lambda, the model considers all attributes to be insignificant.</p>
+When we get the least value of rss, ie. best possible value of lambda, the model considers all attributes to be significant. As it can be seen below, all the 17 attributes considered have been taken into account because all of them have non-zero weights after the Lasso Regression.</p>
 
 </div>
 </div>
